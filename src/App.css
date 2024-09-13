@@ -28,6 +28,8 @@ h1 {
   grid-template-columns: repeat(3, 1fr); /* Tres colunas de tamanhos iguais */
   gap: 10px; /* Menor espaço entre portas */
   margin-bottom: 20px;
+  margin-top: 20px;
+  gap: 30px;
 }
 
 .door-container {
@@ -51,7 +53,7 @@ h1 {
   left: 0;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   row-gap: 10px;
-}
+ }
 
 .door-frame.door-revealed {
   background-color: #333;
@@ -157,4 +159,8 @@ strong {
   max-height: 50%;
   background-color: #333;
   object-fit: contain; 
+}
+
+.door-container-hidden {
+  display: none; /* Oculta el contenedor de la puerta */
 }
