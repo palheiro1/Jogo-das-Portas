@@ -123,12 +123,12 @@ function App() {
 
       <div className="footer">
         <p className="footer-text">
-          Este jogo testa o <strong><a href="https://pt.wikipedia.org/wiki/Problema_de_Monty_Hall" target="_blank" rel="noopener noreferrer">problema de Monty Hall</a></strong>. Jogue várias vezes usando a mesma estratégia para verificar se os resultados coincidem com a teoria de probabilidades.
+          Este jogo testa o <strong><a href="https://pt.wikipedia.org/wiki/Problema_de_Monty_Hall" target="_blank" rel="noopener noreferrer">problema de Monty Hall</a></strong>. Joga várias vezes usando a mesma estratégia para verificar se os resultados coincidem com a teoria de probabilidades.
         </p>
         <p className="footer-text">
           <strong>Resultados esperados:</strong><br />
           Se  <strong> sempre mantés a porta</strong>, ganharás 33% das vezes.<br />
-          Se  <strong> sempre trocas a porta</strong>, ganharás 675 das vezes.
+          Se  <strong> sempre trocas a porta</strong>, ganharás 67% das vezes.
         </p>
       </div>
     </div>
