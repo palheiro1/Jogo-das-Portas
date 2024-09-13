@@ -130,7 +130,7 @@ h1 {
 }
 
 .footer {
-  margin-top: auto; /* Mueve el pie de página hacia abajo si hay espacio */
+  margin-top: 0; 
 }
 
 .footer-text {
@@ -139,7 +139,7 @@ h1 {
 }
 
 a {
-  color: #ffb74d; /* Color del link */
+  color: #ffb74d; 
   text-decoration: none;
 }
 
@@ -154,6 +154,6 @@ strong {
 .treasure-image {
   max-width: 50%;
   max-height: 50%;
-  background-color: #333; /* Fondo gris oscuro */
-  object-fit: contain; /* Mantiene la proporción de la imagen */
+  background-color: #333;
+  object-fit: contain; 
 }

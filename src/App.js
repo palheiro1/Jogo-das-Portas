@@ -120,7 +120,6 @@ function App() {
         <p>Vitórias: {contagemVitorias}</p>
         <p>Porcentagem de Vitórias: {porcentagemVitorias}%</p>
       </div>
-
       <div className="footer">
         <p className="footer-text">
           Este jogo testa o <strong><a href="https://pt.wikipedia.org/wiki/Problema_de_Monty_Hall" target="_blank" rel="noopener noreferrer">problema de Monty Hall</a></strong>. Joga várias vezes usando a mesma estratégia para verificar se os resultados coincidem com a teoria de probabilidades.
