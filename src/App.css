@@ -1,0 +1,117 @@
+/* App.css */
+
+.app {
+  text-align: center;
+  background-color: #f0f8ff;
+  padding: 20px;
+}
+
+h1 {
+  color: #ff6347;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.doors {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.door-container {
+  position: relative;
+}
+
+.door {
+  width: 120px;
+  height: 200px;
+  background-color: #4caf50;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.door:hover {
+  transform: scale(1.05);
+}
+
+.door-open {
+  color: #ffd700;
+  font-size: 2rem;
+  animation: sparkle 1.5s infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.door-selected {
+  border: 3px solid #ff4500;
+}
+
+.door-dimmed {
+  opacity: 0.5;
+}
+
+.choice-button {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.result {
+  font-size: 1.8rem;
+  color: #32cd32;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.reset-button {
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+  background-color: #ff4500;
+}
+
+.scoreboard {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #00008b;
+}
