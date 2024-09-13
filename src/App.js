@@ -1,20 +1,28 @@
 // App.js
 import React, { useState } from 'react';
-import './App.css'; // CSS atualizado com estilos coloridos e animações
+import './App.css'; // CSS atualizado
+import coche from './carro.jpeg'; // Importa a imagem do carro
 
 const Door = ({ number, onClick, isSelected, isDisabled, isOpen, isDimmed, showButton, buttonText, onButtonClick }) => {
   const doorClass = `door ${isSelected ? 'door-selected' : ''} ${isDimmed ? 'door-dimmed' : ''}`;
   
   return (
     <div className="door-container">
-      <div className={doorClass} onClick={onClick} style={{ pointerEvents: isDisabled ? 'none' : 'auto' }}>
-        {isOpen ? <div className="door-open">🎉 Tesouro 🎉</div> : <div className="door-closed">Porta {number}</div>}
+      <div className={`door-frame ${isOpen ? 'door-revealed' : ''}`}>
+        {isOpen ? (
+          <div className="door-open">
+            <img src={coche} alt="Tesouro" className="treasure-image" />
+          </div>
+        ) : (
+          <div className={doorClass} onClick={isDisabled ? null : onClick}>
+            {!isOpen && showButton && (
+              <button className="choice-button" onClick={onButtonClick}>
+                {buttonText}
+              </button>
+            )}
+          </div>
+        )}
       </div>
-      {showButton && (
-        <button className="choice-button" onClick={onButtonClick}>
-          {buttonText}
-        </button>
-      )}
     </div>
   );
 };
@@ -29,8 +37,10 @@ function App() {
   const [contagemVitorias, setContagemVitorias] = useState(0);
   const [contagemDerrotas, setContagemDerrotas] = useState(0);
   const [escolhaFinal, setEscolhaFinal] = useState(null);
+  
+  const totalJogos = contagemVitorias + contagemDerrotas;
+  const porcentagemVitorias = totalJogos > 0 ? ((contagemVitorias / totalJogos) * 100).toFixed(2) : 0;
 
-  // Função chamada quando o jogador clica em uma porta
   const handleDoorClick = (index) => {
     if (!jogoAcabou && portaSelecionada === null) {
       setPortaSelecionada(index);
@@ -47,10 +57,9 @@ function App() {
     }
   };
 
-  // Função chamada quando o jogador decide se quer trocar ou manter a porta
   const handleDecision = (trocar) => {
     const escolha = trocar ? portaAlternativa : portaSelecionada;
-    setEscolhaFinal(escolha); // Armazenamos a escolha final
+    setEscolhaFinal(escolha);
     setJogoAcabou(true);
 
     if (escolha === tesouroIndex) {
@@ -59,10 +68,9 @@ function App() {
       setContagemDerrotas(contagemDerrotas + 1);
     }
     
-    setPortasReveladas(true); // Revelamos todas as portas
+    setPortasReveladas(true);
   };
 
-  // Função para reiniciar o jogo
   const resetGame = () => {
     setPortaSelecionada(null);
     setJogoAcabou(false);
@@ -88,7 +96,10 @@ function App() {
             isDimmed={podeTrocar && index !== portaSelecionada && index !== portaAlternativa}
             showButton={podeTrocar && (index === portaSelecionada || index === portaAlternativa)}
             buttonText={index === portaSelecionada ? "Manter escolha" : "Trocar de porta"}
-            onButtonClick={() => handleDecision(index === portaAlternativa)}
+            onButtonClick={() => {
+              handleDecision(index === portaAlternativa);
+              setPodeTrocar(false);
+            }}
           />
         ))}
       </div>
@@ -107,7 +118,18 @@ function App() {
 
       <div className="scoreboard">
         <p>Vitórias: {contagemVitorias}</p>
-        <p>Derrotas: {contagemDerrotas}</p>
+        <p>Porcentagem de Vitórias: {porcentagemVitorias}%</p>
+      </div>
+
+      <div className="footer">
+        <p className="footer-text">
+          Este jogo testa o <strong><a href="https://pt.wikipedia.org/wiki/Problema_de_Monty_Hall" target="_blank" rel="noopener noreferrer">problema de Monty Hall</a></strong>. Jogue várias vezes usando a mesma estratégia para verificar se os resultados coincidem com a teoria de probabilidades.
+        </p>
+        <p className="footer-text">
+          <strong>Resultados esperados:</strong><br />
+          Se  <strong> sempre mantés a porta</strong>, ganharás 33% das vezes.<br />
+          Se  <strong> sempre trocas a porta</strong>, ganharás 675 das vezes.
+        </p>
       </div>
     </div>
   );

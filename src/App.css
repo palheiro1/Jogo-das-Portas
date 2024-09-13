@@ -1,57 +1,73 @@
 /* App.css */
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .app {
   text-align: center;
-  background-color: #f0f8ff;
+  background-color: #333;
+  color: #f5f5f5;
   padding: 20px;
+  font-family: Arial, sans-serif;
+  min-height: 100%;
 }
 
 h1 {
-  color: #ff6347;
+  color: #ffb74d;
   font-size: 2.5rem;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 4px #000000;
 }
 
 .doors {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin-bottom: 30px;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .door-container {
   position: relative;
+  width: 150px;
+  height: 200px;
+}
+
+.door-frame {
+  width: 100%;
+  height: 100%;
+  background-color: #555;
+  border-radius: 10px;
+  border: 2px solid #777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.door-frame.door-revealed {
+  background-color: #333;
+  border: 2px solid #888;
 }
 
 .door {
-  width: 120px;
-  height: 200px;
-  background-color: #4caf50;
+  width: 100%;
+  height: 100%;
+  background-image: url('./door-image.png'); /* Imagem da porta */
+  background-size: cover;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .door:hover {
   transform: scale(1.05);
-}
-
-.door-open {
-  color: #ffd700;
-  font-size: 2rem;
-  animation: sparkle 1.5s infinite;
-}
-
-@keyframes sparkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 
 .door-selected {
@@ -64,39 +80,31 @@ h1 {
 
 .choice-button {
   position: absolute;
-  top: -50px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  background-color: #ff6347;
+  transform: translate(-50%, -50%);
+  background-color: #4caf50;
   color: white;
   border: none;
-  padding: 10px;
-  font-size: 1rem;
+  padding: 10px 20px;
+  font-size: 0.9rem;
   border-radius: 5px;
   cursor: pointer;
-  animation: pulse 1s infinite;
+  transition: background-color 0.3s ease;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+.choice-button:hover {
+  background-color: #45a049;
 }
 
 .result {
-  font-size: 1.8rem;
-  color: #32cd32;
+  font-size: 1.5rem;
+  color: #ffb74d;
   margin-bottom: 20px;
-  animation: fadeIn 1s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 .reset-button {
-  background-color: #ff6347;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -107,11 +115,46 @@ h1 {
 }
 
 .reset-button:hover {
-  background-color: #ff4500;
+  background-color: #45a049;
 }
 
 .scoreboard {
   margin-top: 20px;
   font-size: 1.2rem;
-  color: #00008b;
+  color: #ffb74d;
+}
+
+.footer {
+  margin-top: 40px;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.footer-text strong {
+  color: #ffb74d; 
+}
+
+.footer-text a {
+  color: #4dc7ff; 
+  text-decoration: solid; 
+}
+
+.footer-text a:hover {
+  text-decoration: underline; /* Opcional: subrayado al pasar el mouse */
+}
+
+.treasure-image {
+  width: 50%;
+  height: auto;
+  background-color: #333; /* Fundo cinza escuro */
+}
+
+@media (max-width: 600px) {
+  .door-container {
+    width: 100%;
+    height: auto;
+  }
 }
