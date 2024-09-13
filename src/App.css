@@ -25,15 +25,15 @@ h1 {
 
 .doors {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr); /* Tres colunas de tamanhos iguais */
+  gap: 10px; /* Menor espaço entre portas */
   margin-bottom: 20px;
 }
 
 .door-container {
   position: relative;
   width: 100%;
-  padding-top: 133%; /* 200px height / 150px width * 100% */
+  padding-top: 150%; /* Ajustado para uma proporção de 2:3 (altura/altura) */
   box-sizing: border-box;
 }
 
