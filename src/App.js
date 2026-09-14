@@ -37,7 +37,6 @@ function App() {
   const [tesouroIndex, setTesouroIndex] = useState(Math.floor(Math.random() * 3));
   const [portaSelecionada, setPortaSelecionada] = useState(null);
   const [jogoAcabou, setJogoAcabou] = useState(false);
-  const [portasReveladas, setPortasReveladas] = useState(false);
   const [podeTrocar, setPodeTrocar] = useState(false);
   const [contagemVitorias, setContagemVitorias] = useState(0);
   const [contagemDerrotas, setContagemDerrotas] = useState(0);
@@ -46,7 +45,6 @@ function App() {
   const [portaSelecionadaFinal, setPortaSelecionadaFinal] = useState(null);
   const [portaAlternativa, setPortaAlternativa] = useState(null);
   const [portaDescartada, setPortaDescartada] = useState(null);
-  const [portaReveladaAberta, setPortaReveladaAberta] = useState(false);
   const [portaDesvanecendo, setPortaDesvanecendo] = useState(false);
   const [portaOculta, setPortaOculta] = useState(false);
 
@@ -116,7 +114,6 @@ function App() {
     setPortaSelecionada(novaEscolha);
     setPortaDescartada(trocar ? portaSelecionada : portaAlternativa);
     setJogoAcabou(true);
-    setPortasReveladas(true);
     setEscolhaFinal(novaEscolha);
   
     // Depuração
@@ -142,7 +139,6 @@ function App() {
     setPortaSelecionada(null);
     setPortaSelecionadaFinal(null);
     setJogoAcabou(false);
-    setPortasReveladas(false);
     setPortaAlternativa(null);
     setPodeTrocar(false);
     setEscolhaFinal(null);
@@ -170,7 +166,7 @@ function App() {
             number={index + 1}
             onClick={() => handleDoorClick(index)}
             isSelected={index === portaSelecionada || index === escolhaFinal}
-            isOpen={index === portaRevelada || jogoAcabou && (index === 0 || index === 1 || index === 2)}
+            isOpen={index === portaRevelada || (jogoAcabou && (index === 0 || index === 1 || index === 2))}
             isFinal={index === escolhaFinal}  
             isDisabled={jogoAcabou || podeTrocar}
             isDimmed={podeTrocar && index !== portaSelecionadaFinal && index !== portaAlternativa && index !== portaDescartada}
